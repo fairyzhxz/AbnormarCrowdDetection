@@ -1,3 +1,4 @@
+from __future__ import print_function
 import numpy as np
 import cv2
 
@@ -116,7 +117,7 @@ if __name__ == '__main__':
     cam = cv2.VideoCapture("Normal Crowds/879-38_l.mov")
     ret, prev = cam.read()
     if not ret:
-        print 'Cant read file'
+        print('Cant read file')
     prev = cv2.resize(prev, (0, 0), fx=resize, fy=resize)
     prevgray = cv2.cvtColor(prev, cv2.COLOR_BGR2GRAY)
     while True:
