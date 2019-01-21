@@ -59,8 +59,8 @@ def latent_dirichlet_allocation(size):
     likelihood=np.array([])
     for word in visualwords:
         data = np.load('LDA/' + word)
-        print data.shape
-        print word
+        print(data.shape)
+        print(word)
         for i in range(data.shape[0]):
             model.fit(data[i].reshape(11,15).astype(np.int32))
             likelihood=np.append(likelihood,model.loglikelihood())
@@ -100,7 +100,7 @@ Returns:
 def get_visual_words_and_save(directory,n=5,T=10,C=10,K=30,resize=0.25):
     videos = os.listdir(directory)
     for file in videos:
-        print file
+        print(file)
         fn = file.split(".")[0]
         Words = np.empty((0, T, n, n, 3))
         IsRead,Force, flow = social_force_calculation.force_calculation(directory+"/" + file, 0.5, 0, resize)
@@ -150,7 +150,7 @@ def create_lda_model_from_visual_words(kmeans,directory,n=5,T=10,resize=0.25):
     videos = os.listdir(directory)
     for file in videos:
         fn = file.split(".")[0]
-        print file
+        print(file)
         IsRead,Force, _ = social_force_calculation.force_calculation(directory+"/" + file, 0.5, 0, resize)
         if not IsRead:
             continue
@@ -161,7 +161,7 @@ def create_lda_model_from_visual_words(kmeans,directory,n=5,T=10,resize=0.25):
             F1 = Force[T * i:T * i + T, :, :, :]  # getting one clip of 10 frames
             arr=np.array([])
             for k in xrange(0, Force.shape[1] - n, n):
-                for d in  xrange(0, Force.shape[2] - n, n):
+                for d in xrange(0, Force.shape[2] - n, n):
                     Word = F1[:, k:k + n, d:d + n, :]
                     cluster=kmeans.predict(np.array([Word.flatten()]))
                     arr=np.append(arr,cluster[0])
