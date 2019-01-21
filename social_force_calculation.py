@@ -99,7 +99,7 @@ def force_calculation(videoUrl,tau,Pi,resize):
     cam = cv2.VideoCapture(videoUrl)
     ret, prev = cam.read()
     if not ret:
-        print 'Cannot read '+videoUrl
+        print('Cannot read '+videoUrl)
         cam.release()
         return False, np.array([]),np.array([])
     prev = cv2.resize(prev, (0, 0), fx=resize, fy=resize)
@@ -174,13 +174,13 @@ Returns:
 def get_video_and_create_video_with_force_and_flow(directory,tau,Pi,resize):
     videos = os.listdir(directory)
     for file in videos:
-        print file
+        print(file)
         fn=file.split(".")[0]
         fn_ext = file.split(".")[-1]
         cam = cv2.VideoCapture(directory + '/' + file)
         ret, prev = cam.read()
         if not ret:
-            print 'Cannot read '+file+' continuing to next'
+            print('Cannot read '+file+' continuing to next')
             cam.release()
             continue
         prev = cv2.resize(prev, (0, 0), fx=resize, fy=resize)
@@ -226,14 +226,14 @@ Returns:
 def get_video_and_create_colormap_video(directory,tau,Pi,resize=0.25):
     videos = os.listdir(directory)
     for file in videos:
-        print file
+        print(file)
         fn=file.split(".")[0]
         fn_ext=file.split(".")[-1]
         cam = cv2.VideoCapture(directory+'/'+file)
         ret, prev = cam.read()
         if not ret:
             cam.release()
-            print 'Cant read '+file+' continuing to next'
+            print('Cant read '+file+' continuing to next')
             continue
         prev = cv2.resize(prev, (0, 0), fx=resize, fy=resize)
         prevgray = cv2.cvtColor(prev, cv2.COLOR_BGR2GRAY)
