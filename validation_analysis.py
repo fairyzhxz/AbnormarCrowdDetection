@@ -19,6 +19,7 @@ References
 
 '''
 
+
 def show_data(videoUrl,resize):
     xdata = []
     ydata = []
@@ -35,7 +36,7 @@ def show_data(videoUrl,resize):
     line, = axes.plot(xdata, ydata, 'r-')
     cam = cv2.VideoCapture(videoUrl)
     liks=np.load('LDAresult/likelihood.npy')
-    print np.amax(liks), np.amin(liks)
+    print(np.amax(liks), np.amin(liks))
     j=0
     i=0
     count=0
@@ -45,7 +46,7 @@ def show_data(videoUrl,resize):
             break
         if(i>=liks.shape[0]):
             break
-        print liks[i]
+        print(liks[i])
 
         xdata.append(count)
         ydata.append(liks[i])
